@@ -49,7 +49,7 @@ https://osf.io/4x3r9/?view_only=87e7af84c0564bd1b3eadff23e4b7e54
 
 ### CROCODILE: automatiC RelatiOn extraCtiOn Dataset wIth nLi filtEring.
 
-REBEL dataset can be recreated using our RE dataset creator [CROCODILE](https://anonymous.4open.science/r/crocodile-34DD/)
+REBEL dataset can be recreated using our RE dataset creator [CROCODILE](https://github.com/Babelscape/crocodile)
 
 ## Training and testing
 
