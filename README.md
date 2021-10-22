@@ -1,4 +1,19 @@
-# REBEL
+# REBEL: Relation Extraction By End-to-end Language generation
+
+This is the repository for the Findings of EMNLP 2021 paper REBEL: Relation Extraction By End-to-end Language generation. We present a new linearization aproach and a reframing of Relation Extraction as a seq2seq task. The paper can be found [here](docs/EMNLP_2021_REBEL__Camera_Ready_.pdf). If you use the code, please reference this work in your paper:
+
+    @inproceedings{huguet-cabot-navigli-2021-rebel,
+    title = "REBEL: Relation Extraction By End-to-end Language generation",
+    author = "Huguet Cabot, Pere-Llu{\'\i}s  and
+      Navigli, Roberto",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2021",
+    month = nov,
+    year = "2021",
+    address = "Online and in the Barceló Bávaro Convention Centre, Punta Cana, Dominican Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://github.com/Babelscape/rebel/blob/main/docs/EMNLP_2021_REBEL__Camera_Ready_.pdf",
+    }
+
 
 ```
 Repo structure
