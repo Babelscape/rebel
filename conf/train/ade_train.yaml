@@ -1,0 +1,94 @@
+# @package _global_
+
+# optimization
+train_batch_size: 8
+eval_batch_size: 8
+gradient_acc_steps: 4
+gradient_clip_value: 10.0
+max_steps: 3000
+
+# evaluation and persistence
+apply_early_stopping: False
+val_check_interval: 1.0
+val_percent_check: 1.0
+monitor_var: 'val_F1_micro'
+monitor_var_mode: 'max'
+patience: 5
+model_name: 'ade'
+save_top_k: 3
+
+# core
+gpus: 1
+precision: 16
+amp_level: 
+
+do_train: True
+do_eval: True
+do_predict: False
+evaluation_strategy: "no"
+prediction_loss_only: False
+checkpoint_path:
+
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 8
+
+per_gpu_train_batch_size: 
+per_gpu_eval_batch_size: 
+
+gradient_accumulation_steps: 1
+eval_accumulation_steps: 
+
+learning_rate: 0.00005
+weight_decay: 0.01
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_epsilon: 0.00000001
+max_grad_norm: 1.0
+
+num_train_epochs: 10.0
+
+seed: 42
+
+fp16_opt_level: "O1"
+fp16_backend: "auto"
+local_rank: -1
+
+dataloader_drop_last: False
+eval_steps: 
+dataloader_num_workers: 0
+
+past_index: -1
+
+run_name: 
+disable_tqdm: 
+
+remove_unused_columns: True
+label_names: 
+
+load_best_model_at_end: False
+metric_for_best_model: 
+greater_is_better: 
+ignore_data_skip: False
+sharded_ddp: False
+deepspeed: 
+label_smoothing_factor: 0.0
+adafactor: False
+group_by_length: False
+
+dataloader_pin_memory: True
+
+
+label_smoothing: 0.0
+sortish_sampler: False
+predict_with_generate: False
+decoder_layerdrop: 
+dropout: 0.1
+attention_dropout: 
+lr_scheduler: "linear"
+warmup_steps: 300
+classifier: False
+# Callbacks
+samples_interval: 250
+
+# Logger
+offline_mode: False

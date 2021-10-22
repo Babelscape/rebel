@@ -1,0 +1,23 @@
+# @package _global_
+
+num_workers: 8
+dataset_name: '/home/martinez/rebel/datasets/nyt_typed.py'
+text_column: 'context'
+target_column: 'triplets'
+train_file: '/home/martinez/rebel/data/nyt/train.json'
+validation_file: '/home/martinez/rebel/data/nyt/dev.json'
+test_file: '/home/martinez/rebel/data/nyt/test.json'
+overwrite_cache: False
+preprocessing_num_workers: 
+max_source_length: 1024
+max_target_length: 128
+val_max_target_length: 256
+pad_to_max_length: False
+max_train_samples:
+max_val_samples: 
+max_test_samples: 
+num_beams: 
+eval_beams: 3
+ignore_pad_token_for_loss: True
+source_prefix: 
+relations_file: 

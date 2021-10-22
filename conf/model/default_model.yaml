@@ -1,0 +1,11 @@
+# @package _global_
+
+model_name_or_path: 'facebook/bart-large'
+config_name: 'facebook/bart-large'
+tokenizer_name: 'facebook/bart-large'
+cache_dir: 
+use_fast_tokenizer: True
+
+model_revision: 'main'
+use_auth_token: False
+finetune: False

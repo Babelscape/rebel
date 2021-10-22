@@ -1,0 +1,4 @@
+defaults:
+  - train: default_train
+  - model: default_model
+  - data: default_data
