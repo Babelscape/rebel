@@ -14,9 +14,9 @@ import torch
 )
 def load_models():
     st_time = time()
-    tokenizer = AutoTokenizer.from_pretrained("model/Rebel-large")
+    tokenizer = AutoTokenizer.from_pretrained("Babelscape/rebel-large")
     print("+++++ loading Model", time() - st_time)
-    model = AutoModelForSeq2SeqLM.from_pretrained("model/Rebel-large")
+    model = AutoModelForSeq2SeqLM.from_pretrained("Babelscape/rebel-large")
     if torch.cuda.is_available():
         _ = model.to("cuda:0") # comment if no GPU available
     _ = model.eval()
