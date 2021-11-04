@@ -6,6 +6,7 @@
 
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-REBEL-blue)](https://huggingface.co/Babelscape/rebel-large)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Babelscape/rebel-demo)
+[![](https://img.shields.io/badge/-PyTorch--Lightning--Template-blueviolet?style=for-the-badge&logo=github)](https://github.com/edobobo/p-lightning-template)
 
 # REBEL: Relation Extraction By End-to-end Language generation
 
