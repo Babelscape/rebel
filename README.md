@@ -139,6 +139,6 @@ TACRED is not freely avialable but instructions on how to create Re-TACRED from 
 
 For CONLL04 and ADE one can use the script from the [SpERT github](https://github.com/lavis-nlp/spert/blob/master/scripts/fetch_datasets.sh).
 
-For NYT the dataset can be downloaded from [Copy_RE github](https://github.com/xiangrongzeng/copy_re).
+For NYT the dataset can be downloaded from [JointER github](https://github.com/yubowen-ph/JointER/tree/master/dataset/NYT-multi/data).
 
-Finally the DocRED for RE can be downloaded at the [JEREX github](https://github.com/lavis-nlp/jerex/blob/main/scripts/fetch_datasets.sh)
+Finally the DocRED for RE can be downloaded at the [JEREX github](https://github.com/lavis-nlp/jerex/blob/main/scripts/fetch_datasets.sh).
