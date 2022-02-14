@@ -142,3 +142,9 @@ For CONLL04 and ADE one can use the script from the [SpERT github](https://githu
 For NYT the dataset can be downloaded from [JointER github](https://github.com/yubowen-ph/JointER/tree/master/dataset/NYT-multi/data).
 
 Finally the DocRED for RE can be downloaded at the [JEREX github](https://github.com/lavis-nlp/jerex/blob/main/scripts/fetch_datasets.sh).
+
+<br>
+
+# License 
+REBEL is licensed under the CC BY-SA-NC 4.0 license. The text of the license can be found [here](https://github.com/Babelscape/rebel/blob/master/LICENSE.md).
+
