@@ -68,7 +68,8 @@ def train(conf: omegaconf.DictConfig) -> None:
     
     tokenizer_kwargs = {
         "use_fast": conf.use_fast_tokenizer,
-        "additional_special_tokens": ['<obj>', '<subj>', '<triplet>'],
+        "additional_special_tokens": ['<obj>', '<subj>', '<triplet>', '<head>', '</head>', '<tail>', '</tail>'], # Here the tokens for head and tail are legacy and only needed if finetuning over the public REBEL checkpoint, but are not used. If training from scratch, remove this line and uncomment the next one.
+#         "additional_special_tokens": ['<obj>', '<subj>', '<triplet>'],
     }
 
     tokenizer = AutoTokenizer.from_pretrained(
