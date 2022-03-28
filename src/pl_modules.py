@@ -189,13 +189,11 @@ class BasePLModule(pl.LightningModule):
         decoded_preds = self.tokenizer.batch_decode(generated_tokens, skip_special_tokens=False)
         decoded_labels = self.tokenizer.batch_decode(torch.where(labels != -100, labels, self.config.pad_token_id), skip_special_tokens=False)
         if self.hparams.dataset_name.split('/')[-1] == 'conll04_typed.py':
-            f = open('preds_raw.txt','a')
-            for gen_sample, label_sample in zip(decoded_preds, decoded_labels):
-                f.write(str(gen_sample) + str(label_sample) +'\n')
-            f.close()
             return [extract_triplets_typed(rel) for rel in decoded_preds], [extract_triplets_typed(rel) for rel in decoded_labels]
         elif self.hparams.dataset_name.split('/')[-1] == 'nyt_typed.py':
             return [extract_triplets_typed(rel, {'<loc>': 'LOCATION', '<org>': 'ORGANIZATION', '<per>': 'PERSON'}) for rel in decoded_preds], [extract_triplets_typed(rel, {'<loc>': 'LOCATION', '<org>': 'ORGANIZATION', '<per>': 'PERSON'}) for rel in decoded_labels]
+        elif self.hparams.dataset_name.split('/')[-1] == 'docred_typed.py':
+            return [extract_triplets_typed(rel, {'<loc>': 'LOC', '<misc>': 'MISC', '<per>': 'PER', '<num>': 'NUM', '<time>': 'TIME', '<org>': 'ORG'}) for rel in decoded_preds], [extract_triplets_typed(rel, {'<loc>': 'LOC', '<misc>': 'MISC', '<per>': 'PER', '<num>': 'NUM', '<time>': 'TIME', '<org>': 'ORG'}) for rel in decoded_labels]
         return [extract_triplets(rel) for rel in decoded_preds], [extract_triplets(rel) for rel in decoded_labels]
 
     def generate_samples(self,
