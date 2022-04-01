@@ -133,6 +133,34 @@ We suggest running the demo to test REBEL. Once the model files are unzipped in 
 
 And a demo will be available in the browser. It accepts free input as well as data from the sample file in data/rebel/
 
+## spaCy
+
+You can also use REBEL with spaCy, allowing you to use our system with a seamless interface that tackles
+**full end-to-end relation extraction**. To add REBEL as a custom component you will need the transformers library installed and:
+
+```python
+import spacy
+import spacy_component
+
+nlp = spacy.load("en_core_web_sm")
+
+nlp.add_pipe("rebel", after="senter", config={
+    'device':0, # Number of the GPU, -1 if want to use CPU
+    'model_name':'Babelscape/rebel-large'} # Model used, will default to 'Babelscape/rebel-large' if not given
+    )
+input_sentence = "Gràcia is a district of the city of Barcelona, Spain."
+                 
+doc = nlp(input_sentence)
+
+for value, rel_dict in doc._.rel.items():
+    print(f"{value}: {rel_dict}")
+# (0, 8): {'relation': 'located in the administrative territorial entity', 'head_span': Gràcia, 'tail_span': Barcelona}
+# (0, 10): {'relation': 'country', 'head_span': Gràcia, 'tail_span': Spain}
+# (8, 0): {'relation': 'contains administrative territorial entity', 'head_span': Barcelona, 'tail_span': Gràcia}
+# (8, 10): {'relation': 'country', 'head_span': Barcelona, 'tail_span': Spain}
+```
+
+    
 ## Datasets
 
 TACRED is not freely avialable but instructions on how to create Re-TACRED from it can be found [here](https://github.com/gstoica27/Re-TACRED).
