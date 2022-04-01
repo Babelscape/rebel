@@ -7,7 +7,9 @@
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-REBEL-blue)](https://huggingface.co/Babelscape/rebel-large)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Babelscape/rebel-demo)
 [![](https://img.shields.io/badge/-PyTorch--Lightning--Template-blueviolet?style=for-the-badge&logo=github)](https://github.com/edobobo/p-lightning-template)
-
+<a href="https://spacy.io/">
+    <img alt="plugin: spacy" src="https://img.shields.io/badge/plugin%20for-spaCy%203.2-09A3D5.svg?style=for-the-badge&labelColor=gray">
+</a>
 # REBEL: Relation Extraction By End-to-end Language generation
 
 This is the repository for the Findings of EMNLP 2021 paper REBEL: Relation Extraction By End-to-end Language generation. We present a new linearization aproach and a reframing of Relation Extraction as a seq2seq task. The paper can be found [here](docs/EMNLP_2021_REBEL__Camera_Ready_.pdf). If you use the code, please reference this work in your paper:
