@@ -71,7 +71,7 @@ from transformers import pipeline
 triplet_extractor = pipeline('text2text-generation', model='Babelscape/rebel-large', tokenizer='Babelscape/rebel-large')
 
 # We need to use the tokenizer manually since we need special tokens.
-extracted_text = triplet_extractor.tokenizer.batch_decode(triplet_extractor("Punta Cana is a resort town in the municipality of Higuey, in La Altagracia Province, the eastern most province of the Dominican Republic", return_tensors=True, return_text=False)[0]["generated_token_ids"]["output_ids"])
+extracted_text = triplet_extractor.tokenizer.batch_decode([triplet_extractor("Punta Cana is a resort town in the municipality of Higuey, in La Altagracia Province, the eastern most province of the Dominican Republic", return_tensors=True, return_text=False)[0]["generated_token_ids"]])
 
 print(extracted_text[0])
 
@@ -137,7 +137,7 @@ And a demo will be available in the browser. It accepts free input as well as da
 
 ## spaCy
 
-You can also use REBEL with spaCy, allowing you to use our system with a seamless interface that tackles
+You can also use REBEL with spaCy (>=3.0), allowing you to use our system with a seamless interface that tackles
 **full end-to-end relation extraction**. To add REBEL as a custom component you will need the transformers library installed and:
 
 ```python
@@ -150,7 +150,7 @@ nlp.add_pipe("rebel", after="senter", config={
     'device':0, # Number of the GPU, -1 if want to use CPU
     'model_name':'Babelscape/rebel-large'} # Model used, will default to 'Babelscape/rebel-large' if not given
     )
-input_sentence = "Gràcia is a district of the city of Barcelona, Spain."
+input_sentence = "Gràcia is a district of the city of Barcelona, Spain. It comprises the neighborhoods of Vila de Gràcia, Vallcarca i els Penitents, El Coll, La Salut and Camp d'en Grassot i Gràcia Nova. Gràcia is bordered by the districts of Eixample to the south, Sarrià-Sant Gervasi to the west and Horta-Guinardó to the east. A vibrant and diverse enclave of Catalan life, Gràcia was an independent municipality for centuries before being formally annexed by Barcelona in 1897 as a part of the city's expansion."
                  
 doc = nlp(input_sentence)
 
@@ -160,6 +160,18 @@ for value, rel_dict in doc._.rel.items():
 # (0, 10): {'relation': 'country', 'head_span': Gràcia, 'tail_span': Spain}
 # (8, 0): {'relation': 'contains administrative territorial entity', 'head_span': Barcelona, 'tail_span': Gràcia}
 # (8, 10): {'relation': 'country', 'head_span': Barcelona, 'tail_span': Spain}
+# (17, 0): {'relation': 'located in the administrative territorial entity', 'head_span': Vila de Gràcia, 'tail_span': Gràcia}
+# (21, 0): {'relation': 'located in the administrative territorial entity', 'head_span': Vallcarca i els Penitents, 'tail_span': Gràcia}
+# (26, 0): {'relation': 'located in the administrative territorial entity', 'head_span': El Coll, 'tail_span': Gràcia}
+# (29, 0): {'relation': 'located in the administrative territorial entity', 'head_span': La Salut, 'tail_span': Gràcia}
+# (0, 46): {'relation': 'shares border with', 'head_span': Gràcia, 'tail_span': Eixample}
+# (0, 51): {'relation': 'shares border with', 'head_span': Gràcia, 'tail_span': Sarrià-Sant Gervasi}
+# (0, 59): {'relation': 'shares border with', 'head_span': Gràcia, 'tail_span': Horta-Guinardó}
+# (46, 0): {'relation': 'shares border with', 'head_span': Eixample, 'tail_span': Gràcia}
+# (46, 51): {'relation': 'shares border with', 'head_span': Eixample, 'tail_span': Sarrià-Sant Gervasi}
+# (51, 0): {'relation': 'shares border with', 'head_span': Sarrià-Sant Gervasi, 'tail_span': Gràcia}
+# (51, 46): {'relation': 'shares border with', 'head_span': Sarrià-Sant Gervasi, 'tail_span': Eixample}
+# (51, 59): {'relation': 'shares border with', 'head_span': Sarrià-Sant Gervasi, 'tail_span': Horta-Guinardó}
 ```
 
     

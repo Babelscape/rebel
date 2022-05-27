@@ -66,10 +66,12 @@ class RebelComponent:
         if not Doc.has_extension("rel"):
           Doc.set_extension("rel", default={})
 
-    def _generate_triplets(self, sent: Span) -> List[dict]:
-          output_ids = self.triplet_extractor(sent.text, return_tensors=True, return_text=False)[0]["generated_token_ids"]["output_ids"]
-          extracted_text = self.triplet_extractor.tokenizer.batch_decode(output_ids[0])
-          extracted_triplets = extract_triplets(extracted_text[0])
+    def _generate_triplets(self, sents: List[Span]) -> List[List[dict]]:
+          output_ids = self.triplet_extractor([sent.text for sent in sents], return_tensors=True, return_text=False)#[0]["generated_token_ids"]
+          extracted_texts = self.triplet_extractor.tokenizer.batch_decode([out["generated_token_ids"] for out in output_ids])
+          extracted_triplets = []
+          for text in extracted_texts:
+            extracted_triplets.extend(extract_triplets(text))
           return extracted_triplets
 
     def set_annotations(self, doc: Doc, triplets: List[dict]):
@@ -91,7 +93,6 @@ class RebelComponent:
                 doc._.rel[offset] = {"relation": triplet["type"], "head_span": head_span, "tail_span": tail_span}
 
     def __call__(self, doc: Doc) -> Doc:
-        for sent in doc.sents:
-            sentence_triplets = self._generate_triplets(sent)
-            self.set_annotations(doc, sentence_triplets)
+        sentence_triplets = self._generate_triplets(doc.sents)
+        self.set_annotations(doc, sentence_triplets)
         return doc
