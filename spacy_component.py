@@ -1,11 +1,10 @@
-from spacy import Language
+import re
 from typing import List
 
+from spacy import Language
 from spacy.tokens import Doc, Span
-
-import re
-
 from transformers import pipeline
+
 
 def extract_triplets(text):
     """
@@ -96,3 +95,24 @@ class RebelComponent:
         sentence_triplets = self._generate_triplets(doc.sents)
         self.set_annotations(doc, sentence_triplets)
         return doc
+    
+    def pipe(self, stream, batch_size=128):
+        """
+        It takes a stream of documents, and for each document,
+        it assigns a score to each entity in the document
+
+        :param stream: a generator of documents
+        :param batch_size: The number of documents to be processed at a time, defaults to 128 (optional)
+        """
+        for docs in util.minibatch(stream, size=batch_size):
+            sents = []
+
+            for doc in docs:
+                sents += doc.sents
+            sentence_triplets = self._generate_triplets(sents)
+            index = 0
+            for doc in docs:
+                n_sent = len(list(doc.sents))
+                self.set_annotations(doc, sentence_triplets[index : index + n_sent])
+                index += n_sent
+                yield doc
