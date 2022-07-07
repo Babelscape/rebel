@@ -153,7 +153,7 @@ nlp.add_pipe("rebel", after="senter", config={
 input_sentence = "Gràcia is a district of the city of Barcelona, Spain. It comprises the neighborhoods of Vila de Gràcia, Vallcarca i els Penitents, El Coll, La Salut and Camp d'en Grassot i Gràcia Nova. Gràcia is bordered by the districts of Eixample to the south, Sarrià-Sant Gervasi to the west and Horta-Guinardó to the east. A vibrant and diverse enclave of Catalan life, Gràcia was an independent municipality for centuries before being formally annexed by Barcelona in 1897 as a part of the city's expansion."
                  
 doc = nlp(input_sentence)
-
+doc_list = nlp.pipe([input_sentence])
 for value, rel_dict in doc._.rel.items():
     print(f"{value}: {rel_dict}")
 # (0, 8): {'relation': 'located in the administrative territorial entity', 'head_span': Gràcia, 'tail_span': Barcelona}
