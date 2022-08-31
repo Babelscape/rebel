@@ -3,7 +3,6 @@ from typing import Sequence
 import torch
 from pytorch_lightning import Callback, LightningModule, Trainer
 from torch import nn
-import numpy as np
 import pandas as pd
 from torch.nn.utils.rnn import pad_sequence
 import wandb
@@ -63,7 +62,7 @@ class GenerateTextSamplesCallback(Callback):  # pragma: no cover
 
         if pl_module.hparams.ignore_pad_token_for_loss:
             # Replace -100 in the labels as we can't decode them.
-            labels = np.where(labels != -100, labels, pl_module.tokenizer.pad_token_id)
+            labels = torch.where(labels != -100, labels, pl_module.tokenizer.pad_token_id)
 
         decoded_labels = pl_module.tokenizer.batch_decode(labels, skip_special_tokens=False)
         decoded_inputs = pl_module.tokenizer.batch_decode(batch["input_ids"], skip_special_tokens=False)
