@@ -140,10 +140,12 @@ class BasePLModule(pl.LightningModule):
 
     def training_step(self, batch: dict, batch_idx: int) -> torch.Tensor:
         labels = batch.pop("labels")
+        labels_original = labels.clone()
         batch["decoder_input_ids"] = torch.where(labels != -100, labels, self.config.pad_token_id)
         labels = shift_tokens_left(labels, -100)
         forward_output = self.forward(batch, labels)
         self.log('loss', forward_output['loss'])
+        batch["labels"] = labels_original
         if 'loss_aux' in forward_output:
             self.log('loss_classifier', forward_output['loss_aux'])
             return forward_output['loss'] + forward_output['loss_aux']
