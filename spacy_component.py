@@ -181,8 +181,8 @@ class RebelComponent:
 
                 continue
 
-            head_index = doc.text.lower().find(triplet["head"].lower())
-            tail_index = doc.text.lower().find(triplet["tail"].lower())
+            head_index = text.find(triplet["head"].lower())
+            tail_index = text.find(triplet["tail"].lower())
 
             if ((head_index == -1) or (tail_index == -1)):
 
