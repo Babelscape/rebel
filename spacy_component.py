@@ -3,6 +3,7 @@ from spacy import Language, util
 from spacy.tokens import Doc, Span
 from transformers import pipeline
 from typing import List
+import re
 
 def extract_triplets(text: str) -> List[str]:
     """
@@ -181,8 +182,19 @@ class RebelComponent:
 
                 continue
 
-            head_index = text.find(triplet["head"].lower())
-            tail_index = text.find(triplet["tail"].lower())
+            head_match = re.search(
+                r'\b' + re.escape(triplet["head"].lower()) + r'\b', text)
+            if head_match:
+                head_index = head_match.start()
+            else:
+                head_index = text.find(triplet["head"].lower())
+
+            tail_match = re.search(
+                r'\b' + re.escape(triplet["tail"].lower()) + r'\b', text)
+            if tail_match:
+                tail_index = tail_match.start()
+            else:
+                tail_index = text.find(triplet["tail"].lower())
 
             if ((head_index == -1) or (tail_index == -1)):
 
