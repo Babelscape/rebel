@@ -5,14 +5,20 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/rebel-relation-extraction-by-end-to-end/relation-extraction-on-re-tacred)](https://paperswithcode.com/sota/relation-extraction-on-re-tacred?p=rebel-relation-extraction-by-end-to-end)
 
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-REBEL-blue)](https://huggingface.co/Babelscape/rebel-large)
+[![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-mREBEL-blue)](https://huggingface.co/Babelscape/mrebel-large)
 [![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Babelscape/rebel-demo)
 [![](https://img.shields.io/badge/-PyTorch--Lightning--Template-blueviolet?style=for-the-badge&logo=github)](https://github.com/edobobo/p-lightning-template)
 <a href="https://spacy.io/">
     <img alt="plugin: spacy" src="https://img.shields.io/badge/plugin%20for-spaCy%203.2-09A3D5.svg?style=for-the-badge&labelColor=gray">
 </a>
+
+## Update:
+
+mREBEL is here. We present two new datasets for multilingual Relation Extraction and an array of mREBEL versions. Go to [Section](#RED<sup>FM</sup>:-a-Filtered-and-Multilingual-Relation-Extraction-Dataset) 
+
 # REBEL: Relation Extraction By End-to-end Language generation
 
-This is the repository for the Findings of EMNLP 2021 paper REBEL: Relation Extraction By End-to-end Language generation. We present a new linearization aproach and a reframing of Relation Extraction as a seq2seq task. The paper can be found [here](docs/EMNLP_2021_REBEL__Camera_Ready_.pdf). If you use the code, please reference this work in your paper:
+This is the repository for the Findings of EMNLP 2021 paper REBEL: Relation Extraction By End-to-end Language generation. We present a new linearization approach and a reframing of Relation Extraction as a seq2seq task. The paper can be found [here](docs/EMNLP_2021_REBEL__Camera_Ready_.pdf). If you use the code, please reference this work in your paper:
 
     @inproceedings{huguet-cabot-navigli-2021-rebel-relation,
         title = "{REBEL}: Relation Extraction By End-to-end Language generation",
@@ -187,6 +193,35 @@ Finally the DocRED for RE can be downloaded at the [JEREX github](https://github
 
 <br>
 
+# RED<sup>FM</sup>: a Filtered and Multilingual Relation Extraction Dataset
+
+![image](https://github.com/Babelscape/rebel/assets/26126169/979fb259-00e3-462b-a720-bc818079b0ce)
+
+This is also the repository for the ACL2023 paper RED<sup>FM</sup>: a Filtered and Multilingual Relation Extraction Dataset. We present two new resources as well as multiple multilingual versions of REBEL. The paper can be found [here]([docs/EMNLP_2021_REBEL__Camera_Ready_.pdf](https://arxiv.org/abs/2306.09802)). If you use any of these resources, please reference this work in your paper:
+
+    @inproceedings{huguet-cabot-et-al-2023-redfm-dataset,
+        title = "RED$^{\rm FM}$: a Filtered and Multilingual Relation Extraction Dataset",
+        author = "Huguet Cabot, Pere-Llu{\'\i}s  and Tedeschi, Simone and Ngonga Ngomo, Axel-Cyrille and
+          Navigli, Roberto",
+        booktitle = "Proc. of the 61st Annual Meeting of the Association for Computational Linguistics: ACL 2023",
+        month = jul,
+        year = "2023",
+        address = "Toronto, Canada",
+        publisher = "Association for Computational Linguistics",
+        url = "https://arxiv.org/abs/2306.09802",
+    }
+
+## Datasets
+
+- [RED<sup>FM</sup>](https://huggingface.co/datasets/Babelscape/SREDFM) is a human-filtered Relation Extraction dataset for Arabic, Chinese, French, English, German, Italian and Spanish covering 32 relation types. You can find it [here](https://huggingface.co/datasets/Babelscape/REDFM).
+- [SRED<sup>FM</sup>](https://huggingface.co/datasets/Babelscape/SREDFM) is a machine-filtered Relation Extraction dataset for 17 different languages and covers up to 400 relation types. You can find it [here](https://huggingface.co/datasets/Babelscape/SREDFM). SREDFM was filtered using a Triplet Critic, which you can find [here](https://huggingface.co/Babelscape/mdeberta-v3-base-triplet-critic-xnli)
+
+## Models
+
+- [mREBEL<sub>400</sub>](https://huggingface.co/Babelscape/mrebel-large). This version of mREBEL is trained on 400 relation types, 17 languages using all SRED<sup>FM</sup>, including entity types. Use it as a standalone model or to bootstrap finetuning on your multilingual Relation Extraction datasets.
+- [mREBEL<sub>32</sub>](https://huggingface.co/Babelscape/mrebel-large-32). This version is trained on a subset of SRED<sup>FM</sup> covering only the 32 relation types of RED<sup>FM</sup>.
+- [mREBEL<sub>B400</sub>](https://huggingface.co/Babelscape/mrebel-large). Same as mREBEL<sub>400</sub> but trained on top of M2M100 instead of mBART in order to provide a base version with a smaller footprint.
+
 # License 
-REBEL is licensed under the CC BY-SA-NC 4.0 license. The text of the license can be found [here](https://github.com/Babelscape/rebel/blob/master/LICENSE.md).
+The code for REBEL and RED<sup>FM</sup> is licensed under the CC BY-SA-NC 4.0 license. The text of the license can be found [here](https://github.com/Babelscape/rebel/blob/master/LICENSE.md).
 
