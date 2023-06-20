@@ -14,7 +14,7 @@
 
 ## Update:
 
-mREBEL is here. We present two new datasets for multilingual Relation Extraction and an array of mREBEL versions. Go to [Section](#RED<sup>FM</sup>:-a-Filtered-and-Multilingual-Relation-Extraction-Dataset) 
+mREBEL is here. We present two new datasets for multilingual Relation Extraction and an array of mREBEL versions. Go to [Section](#REDFM) 
 
 # REBEL: Relation Extraction By End-to-end Language generation
 
@@ -193,7 +193,7 @@ Finally the DocRED for RE can be downloaded at the [JEREX github](https://github
 
 <br>
 
-# RED<sup>FM</sup>: a Filtered and Multilingual Relation Extraction Dataset
+# <a name="REDFM"></a>RED<sup>FM</sup>: a Filtered and Multilingual Relation Extraction Dataset
 
 ![image](https://github.com/Babelscape/rebel/assets/26126169/979fb259-00e3-462b-a720-bc818079b0ce)
 
